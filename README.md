@@ -14,6 +14,7 @@
 5. Creates a chroot jail for public users
 6. Makes important files immutable
 7. Adds a greyhats user
-8. Performs file integrity monitoring and restoration on selected files
+8. Sets up IP tables specific to the services required in CDDC
+9. Performs file integrity monitoring and restoration on selected files
 
 To harden, run `harden_system.sh`
