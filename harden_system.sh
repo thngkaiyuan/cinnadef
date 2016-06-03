@@ -36,9 +36,6 @@ chmod 0666 /home/chroot/dev/*
 cp /home/public/file /home/chroot/home/public
 chmod 644 /home/chroot/home/public/file
 
-# Make files immutable
-chattr +i /etc/passwd ./filemon/monitor_files.py ./filemon/check_files.py
-
 # Add greyhats user
 useradd greyhats -p ***REMOVED*** -G wheel
 mkdir /home/greyhats/.ssh
@@ -46,6 +43,9 @@ chown greyhats:greyhats /home/greyhats/.ssh
 chmod 700 /home/greyhats/.ssh
 cp ./keys/authorized_keys /home/greyhats/.ssh/
 chmod 644 /home/greyhats/.ssh/authorized_keys
+
+# Make files immutable
+chattr +i /etc/passwd ./filemon/monitor_files.py ./filemon/check_files.py
 
 # Configure IPTables
 ./setup_iptables.sh
@@ -56,6 +56,6 @@ chmod 644 /home/greyhats/.ssh/authorized_keys
 ./filemon/monitor_files.py /srv/www/htdocs/index.html
 
 # Start file monitoring
-./start_filemon.sh
+./start_filemon.sh &
 
 echo "Done."
