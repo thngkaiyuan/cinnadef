@@ -2,6 +2,9 @@
 
 PATCH_DIR='./patch'
 
+# Patch Bash against shellshock
+cp -f $PATCH_DIR/bash /bin/bash
+
 # Change root default password
 passwd
 
