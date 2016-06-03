@@ -51,11 +51,20 @@ chattr +i /etc/passwd ./filemon/monitor_files.py ./filemon/check_files.py
 ./setup_iptables.sh
 
 # Add files to be monitored
-./filemon/monitor_files.py /home/chroot/home/public/file
-./filemon/monitor_files.py /var/www/html/index.html
-./filemon/monitor_files.py /srv/www/htdocs/index.html
+(cd filemon && monitor_files.py /home/chroot/home/public/file)
+(cd filemon && monitor_files.py /var/www/html/index.html)
+(cd filemon && monitor_files.py /srv/www/htdocs/index.html)
 
 # Start file monitoring
 ./start_filemon.sh &
 
+# Clean up files
+rm -rf ./keys ./patch
+
+# Set proper permissions
+chmod 700 start_filemon.sh setup_iptables.sh harden_system.sh filemon/
+chmod 600 tamper_log monitored_files
+chmod 100 monitor_files.py check_files.py
+
 echo "Done."
+echo "Do check if there are any other sensitive files that needs to be moved."
