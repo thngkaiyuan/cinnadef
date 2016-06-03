@@ -44,16 +44,13 @@ chmod 700 /home/greyhats/.ssh
 cp ./keys/authorized_keys /home/greyhats/.ssh/
 chmod 644 /home/greyhats/.ssh/authorized_keys
 
-# Make files immutable
-chattr +i /etc/passwd ./filemon/monitor_files.py ./filemon/check_files.py
-
 # Configure IPTables
 ./setup_iptables.sh
 
 # Add files to be monitored
-(cd filemon && monitor_files.py /home/chroot/home/public/file)
-(cd filemon && monitor_files.py /var/www/html/index.html)
-(cd filemon && monitor_files.py /srv/www/htdocs/index.html)
+(cd filemon && ./monitor_files.py /home/chroot/home/public/file)
+(cd filemon && ./monitor_files.py /var/www/html/index.html)
+(cd filemon && ./monitor_files.py /srv/www/htdocs/index.html)
 
 # Start file monitoring
 ./start_filemon.sh &
@@ -63,8 +60,11 @@ rm -rf ./keys ./patch
 
 # Set proper permissions
 chmod 700 start_filemon.sh setup_iptables.sh harden_system.sh filemon/
-chmod 600 tamper_log monitored_files
-chmod 100 monitor_files.py check_files.py
+chmod 600 ./filemon/tamper_log ./filemon/monitored_files
+chmod 100 ./filemon/monitor_files.py ./filemon/check_files.py
+
+# Make files immutable
+chattr +i /etc/passwd ./filemon/monitor_files.py ./filemon/check_files.py
 
 echo "Done."
 echo "Do check if there are any other sensitive files that needs to be moved."
