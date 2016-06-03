@@ -3,23 +3,23 @@
 PATCH_DIR='./patch'
 
 # Patch Bash against shellshock
-cp -f $PATCH_DIR/bash /bin/bash
+/bin/cp -f $PATCH_DIR/bash /bin/bash
 
 # Change root default password
 passwd
 
 # Patch VSFTPD
-cp -f $PATCH_DIR/vsftpd `which vsftpd`
+/bin/cp -f $PATCH_DIR/vsftpd `which vsftpd`
 
 # Startup scripts
-cp -f $PATCH_DIR/rc.local /etc/rc.d/
+/bin/cp -f $PATCH_DIR/rc.local /etc/rc.d/
 
 # Configure SSH
-cp -f $PATCH_DIR/sshd_config /etc/ssh/
+/bin/cp -f $PATCH_DIR/sshd_config /etc/ssh/
 
 # Configure FTP
-cp -f $PATCH_DIR/vsftpd.conf /etc/
-cp -f $PATCH_DIR/vsftpd.allowed_users /etc/
+/bin/cp -f $PATCH_DIR/vsftpd.conf /etc/
+/bin/cp -f $PATCH_DIR/vsftpd.allowed_users /etc/
 
 # Create Chroot
 mkdir -p /home/chroot/{bin,dev,home/public,lib}
