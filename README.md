@@ -17,5 +17,6 @@
 8. Adds a greyhats user
 9. Sets up IP tables specific to the services required in CDDC
 10. Performs file integrity monitoring and restoration on selected files
+11. Cleans up after itself and sets proper permissions on its scripts
 
 To harden, run `harden_system.sh`
