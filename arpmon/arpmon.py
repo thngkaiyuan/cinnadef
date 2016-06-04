@@ -43,8 +43,7 @@ def output(scan_name, bad_macs):
 	print "Results from %s:" % (scan_name)
 	for entry in bad_macs:
 		bad_mac, ip_set = entry
-		for ip in ip_set:
-			print "%s is attemping to spoof as %s" % (bad_mac, ip)
+		print "%s is attemping to spoof as %s" % (bad_mac, ip_set)
 
 # Active detection
 bad_macs_active = active_detect(sys.argv[1])
