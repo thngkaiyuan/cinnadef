@@ -17,6 +17,8 @@
 8. Adds a greyhats user
 9. Sets up IP tables specific to the services required in CDDC
 10. Performs file integrity monitoring and restoration on selected files
-11. Cleans up after itself and sets proper permissions on its scripts
+  - Works best for small files
+11. ARP monitoring script that does active and passive detection of ARP poisoning
+12. Cleans up after itself and sets proper permissions on its scripts
 
 To harden, run `harden_system.sh`
