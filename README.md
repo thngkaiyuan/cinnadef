@@ -1,5 +1,7 @@
 # Cinnadef
 
+Defence tools for CDDC
+
 1. Patches bash against shellshock
 2. Prompts user to change root password
 3. Patches VSFTPD to remove known vulnerability
