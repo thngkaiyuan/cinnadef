@@ -21,6 +21,8 @@ Defence tools for CDDC
 10. Performs file integrity monitoring and restoration on selected files
   - Works best for small files
 11. ARP monitoring script that does active and passive detection of ARP poisoning
+  - Checks if any physical address is claiming to be more than one IP address by doing an active ARP ping and by scanning through the machine's ARP table
+  - TODO: Also check if an IP address is claimed by more than one physical address (possible sign of ARP poisoning)
 12. Cleans up after itself and sets proper permissions on its scripts
 
 To harden, run `harden_system.sh`
